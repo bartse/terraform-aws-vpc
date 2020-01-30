@@ -44,6 +44,10 @@ resource "aws_vpc" "this" {
     var.tags,
     var.vpc_tags,
   )
+  
+  lifecycle {
+    ignore_changes = [tags]
+  }
 }
 
 resource "aws_vpc_ipv4_cidr_block_association" "this" {
@@ -73,6 +77,10 @@ resource "aws_vpc_dhcp_options" "this" {
     var.tags,
     var.dhcp_options_tags,
   )
+  
+  lifecycle {
+    ignore_changes = [tags]
+  }
 }
 
 ###############################
@@ -302,6 +310,10 @@ resource "aws_subnet" "public" {
     var.tags,
     var.public_subnet_tags,
   )
+  
+  lifecycle {
+    ignore_changes = [tags]
+  }
 }
 
 #################
@@ -328,6 +340,10 @@ resource "aws_subnet" "private" {
     var.tags,
     var.private_subnet_tags,
   )
+
+  lifecycle {
+    ignore_changes = [tags]
+  }
 }
 
 ##################
